@@ -49,7 +49,7 @@ namespace MJ.Application
             postJsonBody.Append("\"page_size\":0 }");
             postJsonBody.Append("}");
 
-            string jsonBodyStr = postJsonBody.ToString();
+            //string jsonBodyStr = postJsonBody.ToString();
 
             string methodName = "guahao.express.supply.sendorderlist";
             string message_id = Guid.NewGuid().ToString();
