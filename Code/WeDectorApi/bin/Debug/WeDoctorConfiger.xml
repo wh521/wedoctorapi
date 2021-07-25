@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<apisetings>
+	<!--用户秘钥管理中的AccessKey ID-->
+	<apiseting key="appkey" value="wyJzQcIOW866e71u"></apiseting>
+	<!--<apiseting key="appkey" value="123456"></apiseting>-->
+	
+	<!---->
+	<!--<apiseting key="appsecret" value="36488SDXSXXXXXXXXXXXXXXXXX"></apiseting>-->
+	<apiseting key="appsecret" value="57u41WkMYh7y55D7w1AP5v3S07PI1w79"></apiseting>
+	
+	<!--接口版本-->
+	<apiseting key="version" value="2.0"></apiseting>
+	<!--产品编码-->
+	<apiseting key="product_code" value="12m20Lk9x"></apiseting>
+	<!--请求响应类型-->
+	<apiseting key="content_type" value="application/json"></apiseting>
+	<!--Api访问地址-->
+	<apiseting key="api_url" value="http://openapi.guahao-test.com/openapi"></apiseting>
+	
+	
+	<!--供应商信息-->
+	<suppliers>
+		<supplier id="489842338181414912" disc="测试供应商1"></supplier>
+		<supplier id="489842338181414910" disc="测试供应商2"></supplier>
+	</suppliers>
+	
+	<!--供应商门店ID-->
+	<supplier_shops>
+		<shop id="622805701206474753" disc="测试门店1"></shop>
+		<shop id="622805701206474754" disc="测试门店2"></shop>
+	</supplier_shops>
+
+	<methods>
+		<method id="01" method="guahao.express.supply.updatestock" disc="库存更新接口" request_method="post"></method>
+	</methods>
+</apisetings>

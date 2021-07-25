@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<log4net>
+  <root>
+    <level value="ALL" />
+    <appender-ref ref="ConsoleAppender" />
+  </root>
+  <appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date %level %logger - %message%newline" />
+    </layout>
+  </appender>
+
+  <!--log4net配置步骤1：appender定义-->
+  <!--文件型Appender定义-->
+  <appender name="errorAppender" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="ERROR" />
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="Logs\" />
+    <encoding value="utf-8"/>
+    <preserveLogFileNameExtension value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Date" />
+    <param name="staticLogFileName" value="false"/>
+    <datePattern value="yyyyMMdd.'Error.txt'" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="infoAppender" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="INFO" />
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="Logs\" />
+    <encoding value="utf-8"/>
+    <preserveLogFileNameExtension value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Date" />
+    <param name="staticLogFileName" value="false"/>
+    <datePattern value="yyyyMMdd.'Info.txt'" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="debugAppender" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="DEBUG" />
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="Logs\" />
+    <encoding value="utf-8"/>
+    <preserveLogFileNameExtension value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Date" />
+    <param name="staticLogFileName" value="false"/>
+    <datePattern value="yyyyMMdd.'Debug.txt'" />
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date [%thread] %-5level %logger - %message%newline" />
+    </layout>
+  </appender>
+  <appender name="perfAppender" type="log4net.Appender.RollingFileAppender">
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="INFO" />
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <file value="Logs\perf" />
+    <encoding value="utf-8"/>
+    <preserveLogFileNameExtension value="true" />
+    <appendToFile value="true" />
+    <rollingStyle value="Date" />
+    <datePattern value="yyyyMMdd" />
+    <param name="staticLogFileName" value="false"/>
+    <layout type="log4net.Layout.PatternLayout">
+      <conversionPattern value="%date %logger - %message%newline" />
+    </layout>
+  </appender>
+
+  <!--数据库型Appender定义-->
+  <appender name="businessLogAppender" type="log4net.Appender.ADONetAppender">
+    <!--日志开关,levelToMatch设定为EVENT时才记录-->
+    <filter type="log4net.Filter.LevelMatchFilter">
+      <levelToMatch value="EVENT" />
+    </filter>
+    <filter type="log4net.Filter.DenyAllFilter" />
+    <!--日志缓存，当达到指定的数量后才一次性写入-->
+    <bufferSize value="1"/>
+    <!-- 数据库连接的类型，必须在项目引用的程序集中包含-->
+    <connectionType value="System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"/>
+    <!-- 连接字符串-->
+    <connectionString value="Server=192.168.1.228;Database=WMS_SHY;User ID=sa;Password=whw135063;" />
+    <!--日志写入时实际执行的Sql语句-->
+    <commandText value="INSERT INTO Log ([LogId],[LogType],[EventType],[LogContent],[CUser],[CTime]) 
+                   VALUES (newid(),@LogType,@EventType,@LogContent,@CUser,@CTime)"/>
+    <!--Sql语句的参数定义，支持的变量由BaseLogTemplate的子类定义-->
+    <parameter>
+      <parameterName value="@LogType"/>
+      <dbType value="String"/>
+      <size value="100"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <!--可以自定义内容格式-->
+        <conversionPattern value="%property{LogType}"/>
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@EventType"/>
+      <dbType value="String"/>
+      <size value="100"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <!--可以自定义内容格式-->
+        <conversionPattern value="%property{EventType}"/>
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@LogContent"/>
+      <dbType value="String"/>
+      <size value="1000"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <!--可以自定义内容格式-->
+        <conversionPattern value="用户[%property{CUser}]，在[%property{CTime}]时，进行了操作[%property{LogContent}]"/>
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@CUser"/>
+      <dbType value="String"/>
+      <size value="50"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <!--可以自定义内容格式-->
+        <conversionPattern value="%property{CUser}"/>
+      </layout>
+    </parameter>
+    <parameter>
+      <parameterName value="@CTime"/>
+      <dbType value="DateTime"/>
+      <layout type="log4net.Layout.PatternLayout">
+        <!--可以自定义内容格式-->
+        <conversionPattern value="%property{CTime}"/>
+      </layout>
+    </parameter>
+  </appender>
+
+  <!--log4net配置步骤2：日志记录器声明-->
+  <!--系统日志记录器(文件记录)-->
+  <logger name="SysLogger" additivity="false">
+    <level value="ALL" />
+    <appender-ref ref="errorAppender" />
+    <appender-ref ref="infoAppender" />
+    <appender-ref ref="debugAppender" />
+  </logger>
+
+  <!--业务日志记录器(数据库记录)-->
+  <logger name="EventLogger">
+    <level value="ALL" />
+    <appender-ref ref="businessLogAppender" />
+  </logger>
+</log4net>

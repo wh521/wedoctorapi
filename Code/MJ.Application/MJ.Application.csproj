@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DEB2A26E-002B-46B9-AF75-7FEDA69E3DD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MJ.Application</RootNamespace>
+    <AssemblyName>MJ.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Chloe, Version=4.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\WeDectorApi\packages\Chloe.4.16.0\lib\net45\Chloe.dll</HintPath>
+    </Reference>
+    <Reference Include="Chloe.Extension, Version=4.12.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\WeDectorApi\packages\Chloe.Extension.4.12.0\lib\net45\Chloe.Extension.dll</HintPath>
+    </Reference>
+    <Reference Include="Chloe.SqlServer, Version=4.16.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\WeDectorApi\packages\Chloe.SqlServer.4.16.0\lib\net45\Chloe.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\WeDectorApi\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\BaseApp.cs" />
+    <Compile Include="Base\BaseAppExt.cs" />
+    <Compile Include="Base\ContentBase.cs" />
+    <Compile Include="Base\DBCommandInterceptor.cs" />
+    <Compile Include="Base\DbConfig.cs" />
+    <Compile Include="Base\EnumExtensions.cs" />
+    <Compile Include="Base\ExcelExportFormatter.cs" />
+    <Compile Include="Base\LanguagePackagePath.cs" />
+    <Compile Include="Base\PrintApp.cs" />
+    <Compile Include="Base\RequestException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeDoctorRequestApp.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MJ.ApiCore\MJ.ApiCore.csproj">
+      <Project>{49ccf064-568d-4e91-9985-2606f2a4ffb0}</Project>
+      <Name>MJ.ApiCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MJ.Core\MJ.Core.csproj">
+      <Project>{a926dc4a-7d93-4678-987e-6c55ce58f1da}</Project>
+      <Name>MJ.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MJ.Entity\MJ.Entity.csproj">
+      <Project>{16e760cc-d6d6-403c-bd18-58b4e0e26656}</Project>
+      <Name>MJ.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
