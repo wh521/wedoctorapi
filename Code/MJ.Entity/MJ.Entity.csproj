@@ -47,6 +47,10 @@
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\EntityComparer.cs" />
     <Compile Include="Base\UniqueCodeAttribute.cs" />
+    <Compile Include="Order_Delivery\OrderDelivery.cs" />
+    <Compile Include="Order_Delivery\OrderDeliveryDetails.cs" />
+    <Compile Include="Order\OrderRefuse.cs" />
+    <Compile Include="Order_Delivery\OrderDeliveryLogistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

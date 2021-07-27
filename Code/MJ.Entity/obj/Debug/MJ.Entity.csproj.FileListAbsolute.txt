@@ -7,3 +7,12 @@ D:\workspace\01项目\微医云接口平台\Code\MJ.Entity\obj\Debug\MJ.Entity.c
 D:\workspace\01项目\微医云接口平台\Code\MJ.Entity\obj\Debug\MJ.Entity.dll
 D:\workspace\01项目\微医云接口平台\Code\MJ.Entity\obj\Debug\MJ.Entity.pdb
 D:\workspace\01项目\微医云接口平台\Code\MJ.Entity\obj\Debug\MJ.Entity.csproj.AssemblyReference.cache
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\bin\Debug\MJ.Entity.dll
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\bin\Debug\MJ.Entity.pdb
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\bin\Debug\Chloe.dll
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\bin\Debug\Chloe.xml
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\obj\Debug\MJ.Entity.csproj.AssemblyReference.cache
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\obj\Debug\MJ.Entity.csproj.CoreCompileInputs.cache
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\obj\Debug\MJ.Entity.csproj.CopyComplete
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\obj\Debug\MJ.Entity.dll
+D:\workspace\01项目\GitHub\wedoctorapi\Code\MJ.Entity\obj\Debug\MJ.Entity.pdb

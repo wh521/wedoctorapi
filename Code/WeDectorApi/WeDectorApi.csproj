@@ -95,6 +95,10 @@
       <Project>{a926dc4a-7d93-4678-987e-6c55ce58f1da}</Project>
       <Name>MJ.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MJ.Entity\MJ.Entity.csproj">
+      <Project>{16e760cc-d6d6-403c-bd18-58b4e0e26656}</Project>
+      <Name>MJ.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="bin\Debug\WeDoctorConfiger.xml" />
