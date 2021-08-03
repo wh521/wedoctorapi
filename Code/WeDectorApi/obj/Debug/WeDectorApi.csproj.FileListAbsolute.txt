@@ -42,11 +42,13 @@ D:\workspace\01项目\微医云接口平台\Code\WeDectorApi\bin\Debug\Chloe.Sql
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\WeDectorApi.exe.config
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\WeDectorApi.exe
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\WeDectorApi.pdb
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.ApiCore.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Application.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Core.dll
-D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Newtonsoft.Json.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Entity.dll
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Newtonsoft.Json.dll
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Quartz.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.Extension.dll
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.SqlServer.dll
@@ -60,8 +62,10 @@ D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\NPOI.OpenXml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.ApiCore.pdb
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Application.pdb
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Core.pdb
-D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Newtonsoft.Json.xml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\MJ.Entity.pdb
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Newtonsoft.Json.xml
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Quartz.xml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.xml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.Extension.xml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\Chloe.SqlServer.xml
@@ -74,6 +78,7 @@ D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\BouncyCastle
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\bin\Debug\NPOI.OpenXml4Net.xml
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.csproj.AssemblyReference.cache
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.Form1.resources
+D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.FrmApi.resources
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.Properties.Resources.resources
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.csproj.GenerateResource.cache
 D:\workspace\01项目\GitHub\wedoctorapi\Code\WeDectorApi\obj\Debug\WeDectorApi.csproj.CoreCompileInputs.cache

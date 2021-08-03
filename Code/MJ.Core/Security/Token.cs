@@ -13,7 +13,7 @@ namespace MJ.Core.Security
         private const int _defaultExpireSeconds = 60 * 60 * 24 * 365;
 
         //签名默认密钥
-        private const string _defaultPrivateKey = "#ZhongKeHuaZhi2019";
+        private const string _defaultPrivateKey = "@MJ2021";
 
 
         #region 获取用户ID

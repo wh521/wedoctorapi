@@ -11,11 +11,11 @@ namespace MJ.Entity
     /// </summary>
     public class BaseEntity : ICloneable
     {
-        /// <summary>
-        /// 备注
-        /// </summary>
-        [Description("备注")]
-        public string Remark { get; set; }
+        ///// <summary>
+        ///// 备注
+        ///// </summary>
+        //[Description("备注")]
+        //public string Remark { get; set; }
 
         /// <summary>
         /// 是否已删除,1为true，0为false
@@ -25,23 +25,23 @@ namespace MJ.Entity
         /// <summary>
         /// 插入记录的用户Id
         /// </summary>
-        [Description("创建用户")]
-        public string CUser { get; set; }
+        //[Description("创建用户")]
+        //public string CUser { get; set; }
         /// <summary>
         /// 插入记录的服务器时间
         /// </summary>
         [Description("创建时间")]
         public DateTime? CTime { get; set; } = DateTime.Now;
-        /// <summary>
-        /// 修改记录的用户Id
-        /// </summary>
-        [Description("修改用户")]
-        public string MUser { get; set; }
-        /// <summary>
-        /// 修改记录的服务器时间
-        /// </summary>
-        [Description("修改时间")]
-        public DateTime? MTime { get; set; }
+        ///// <summary>
+        ///// 修改记录的用户Id
+        ///// </summary>
+        //[Description("修改用户")]
+        //public string MUser { get; set; }
+        ///// <summary>
+        ///// 修改记录的服务器时间
+        ///// </summary>
+        //[Description("修改时间")]
+        //public DateTime? MTime { get; set; }
         /// <summary>
         /// 删除记录的用户Id
         /// </summary>
@@ -52,18 +52,6 @@ namespace MJ.Entity
         /// </summary>
         [Description("删除时间")]
         public DateTime? DTime { get; set; }
-
-        /// <summary>
-        /// 公司编码
-        /// </summary>
-        [Description("公司编码")]
-        public string CompanyCode { get; set; }
-
-        /// <summary>
-        /// 部门编码
-        /// </summary>
-        [Description("部门编码")]
-        public string DeptCode { get; set; }
 
         /// <summary>
         /// 主键列默认赋值Guid

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chloe.Annotations;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,32 +11,22 @@ namespace MJ.Entity
     /// <summary>
     /// 异常订单类
     /// </summary>
+    [Table("Order_Refuse")]
     public class OrderRefuse: BaseEntity
     {
+        public OrderRefuse() { }
 
         public OrderRefuse(long OrderId, string Refuse_Order_Type)
         {
             this.OrderId = OrderId;
             this.Refuse_Order_Type = Refuse_Order_Type;
         }
-        public OrderRefuse(long Supplier_Id,long Supplier_Shop_Id, long OrderId, string Refuse_Order_Type)
-        {
-            this.Supplier_Id = Supplier_Id;
-            this.Supplier_Shop_Id = Supplier_Shop_Id;
-            this.OrderId = OrderId;
-            this.Refuse_Order_Type = Refuse_Order_Type;
-        }
-
         /// <summary>
-        /// 供应商ID
+        /// 数据记录ID
         /// </summary>
-        [Description("供应商ID")]
-        public long Supplier_Id { get; set; }
-        /// <summary>
-        /// 门店ID
-        /// </summary>
-        [Description("门店ID")]
-        public long Supplier_Shop_Id { get; set; }
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey =true)]
+        public string DataId { get; set; }
         /// <summary>
         /// 订单主单ID
         /// </summary>
@@ -46,5 +37,15 @@ namespace MJ.Entity
         /// </summary>
         [Description("拒单原因")]
         public string Refuse_Order_Type { get; set; }
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
     }
 }

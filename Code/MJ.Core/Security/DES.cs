@@ -18,7 +18,7 @@ namespace MJ.Core.Security
     public class DES
     {
         //默认密钥
-        public const string encryKey = "@SRM2021";
+        public const string encryKey = "@MEIJIE2021";
         /// <summary>
         /// DES加密
         /// </summary>

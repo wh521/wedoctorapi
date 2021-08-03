@@ -99,11 +99,11 @@ namespace WeDectorApi
             //获取订单明细
             //JObject joOrderDetial = WeDoctorRequestApp.Post_SendOrderDetail();
             //标识订单异常
-            List<OrderRefuse> orderRefuseList = new List<OrderRefuse>();
-            orderRefuseList.Add(new OrderRefuse(1, "测试拒绝订单001"));
-            orderRefuseList.Add(new OrderRefuse(2, "测试拒绝订单002"));
-            orderRefuseList.Add(new OrderRefuse(3, "测试拒绝订单003"));
-            JObject joResult = WeDoctorRequestApp.Post_SendOrderRefuse(orderRefuseList);
+            //List<OrderRefuse> orderRefuseList = new List<OrderRefuse>();
+            //orderRefuseList.Add(new OrderRefuse(1, "测试拒绝订单001"));
+            //orderRefuseList.Add(new OrderRefuse(2, "测试拒绝订单002"));
+            //orderRefuseList.Add(new OrderRefuse(3, "测试拒绝订单003"));
+            //JObject joResult = WeDoctorRequestApp.Post_SendOrderRefuse(orderRefuseList);
 
 
             //发货接口

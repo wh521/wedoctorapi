@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJ.Application", "..\MJ.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJ.ApiCore", "..\MJ.ApiCore\MJ.ApiCore.csproj", "{49CCF064-568D-4E91-9985-2606F2A4FFB0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MJ.DbConfigTool", "..\SRM.DbConfigTool\MJ.DbConfigTool.csproj", "{184E2F6E-BFC9-4A8F-8396-68759F578D56}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{49CCF064-568D-4E91-9985-2606F2A4FFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CCF064-568D-4E91-9985-2606F2A4FFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CCF064-568D-4E91-9985-2606F2A4FFB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184E2F6E-BFC9-4A8F-8396-68759F578D56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184E2F6E-BFC9-4A8F-8396-68759F578D56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184E2F6E-BFC9-4A8F-8396-68759F578D56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{184E2F6E-BFC9-4A8F-8396-68759F578D56}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

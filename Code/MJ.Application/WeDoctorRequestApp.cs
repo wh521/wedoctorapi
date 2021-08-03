@@ -1,8 +1,10 @@
 ﻿using MJ.ApiCore.WeDector;
 using MJ.Application.Base;
 using MJ.Core.Extensions;
+using MJ.Core.Log;
 using MJ.Entity;
 using MJ.Entity.Order_Delivery;
+using MJ.Entity.Request;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -19,6 +21,10 @@ namespace MJ.Application
 {
     public class WeDoctorRequestApp
     {
+
+        StockApp _stockApp = new StockApp();
+        OrderRefuseApp _orderRefuseApp = new OrderRefuseApp();
+
         private const long SUPPLYER_ID = 489842338181414912;
         private const long SUPPLYER_SHOPID = 622805701206474753;
 
@@ -26,14 +32,21 @@ namespace MJ.Application
         /// <summary>
         /// 2.1-库存更新
         /// </summary>
-        public static JObject Post_UpdateStock()
+        public JObject Post_UpdateStock()
         {
+            //校验库存更新url配置
             if (string.IsNullOrEmpty(WeDectorConfiger.ApiUrl))
             {
                 throw new ArgumentNullException("url未配置");
             }
+            //查询是否有需要库存更新的数据
+            var stock = _stockApp.GetUpdateStock();
+            if (stock==null || stock.StockList.Count == 0)
+            {
+                throw new Exception("不存在需要更新的库存数据.");
+            }
 
-
+            //校验通过，通过接口更新库存
             StringBuilder postJsonBody = new StringBuilder();
 
             postJsonBody.Append("{");
@@ -41,16 +54,28 @@ namespace MJ.Application
             postJsonBody.Append(string.Format("\"supplier_id\":\"{0}\",", SUPPLYER_ID));
 
             postJsonBody.Append("\"update_list\":[");
-            postJsonBody.Append("{");
-            postJsonBody.Append("\"quantity\":1,");
-            postJsonBody.Append(string.Format("\"supplier_sku_no\":\"{0}\"", "75351"));
-            postJsonBody.Append("}");
 
+            int index = 1;  //循环计数器，用于逻辑处理
+            foreach (var item in stock.StockList)
+            {
+                postJsonBody.Append("{");
+                postJsonBody.Append(string.Format("\"quantity\":{0},",item.Quantity));
+                postJsonBody.Append(string.Format("\"supplier_sku_no\":\"{0}\"", item.Supplier_Sku_No));
+                if (index==stock.StockList.Count)
+                {
+                    postJsonBody.Append("}");
+                }
+                else
+                {
+                    postJsonBody.Append("},");
+                }
+                index++;
+            }
             postJsonBody.Append("]");
             postJsonBody.Append("}");
 
 
-            string jsonBodyStr = postJsonBody.ToString();
+            //string jsonBodyStr = postJsonBody.ToString();
 
 
             string methodName = "guahao.express.supply.updatestock";
@@ -235,11 +260,20 @@ namespace MJ.Application
         /// <param name="url">Api访问地址</param>
         /// <param name="postData">请求参数</param>
         /// <returns></returns>
-        public static JObject Post_SendOrderRefuse(List<OrderRefuse> orderRefuseList)
+        public void Post_SendOrderRefuse()
         {
+            //校验请求url
             if (string.IsNullOrEmpty(WeDectorConfiger.ApiUrl))
             {
+                LogUtil.WriteLog("异常订单同步", string.Format("异常订单同步url配置错误,url未配置,同步已中断."));
                 throw new ArgumentNullException("url未配置");
+            }
+            //校验是否存在异常订单数据
+            var listData = _orderRefuseApp.GetOrderRefuseData();
+            if (listData.Count==0)
+            {
+                LogUtil.WriteLog("异常订单同步", string.Format("异常订单同步,本次执行不存在需同步的异常订单数据."));
+                return;
             }
 
             //请求报文
@@ -249,15 +283,15 @@ namespace MJ.Application
             postJsonBody.Append("\"update_list\":[");
 
             //循环计数变量
-            int k = 1;
-            foreach (OrderRefuse item in orderRefuseList)
+            int index = 1;
+            foreach (OrderRefuse item in listData)
             {
                 postJsonBody.Append("{");
                 postJsonBody.Append(string.Format("\"supplier_shop_id\":{0},", SUPPLYER_SHOPID));
                 postJsonBody.Append(string.Format("\"refuse_order_type\":\"{0}\",", item.Refuse_Order_Type));
                 postJsonBody.Append(string.Format("\"id\":{0},", item.OrderId));
                 postJsonBody.Append(string.Format("\"supplier_id\":{0}", SUPPLYER_ID));
-                if (k==orderRefuseList.Count)
+                if (index == listData.Count)
                 {
                     postJsonBody.Append("}");
                 }
@@ -265,9 +299,8 @@ namespace MJ.Application
                 {
                     postJsonBody.Append("},");
                 }
-                k++;
+                index++;
             }
-
             postJsonBody.Append("]");
             postJsonBody.Append("}");
 
@@ -300,16 +333,46 @@ namespace MJ.Application
 
                 if (response.IsSuccessStatusCode)
                 {
+                    //响应流数据对象
                     string result = response.Content.ReadAsStringAsync().Result;
-                    JObject jo = (JObject)JsonConvert.DeserializeObject(result);
-                    return jo;
+                    var respData = JsonConvert.DeserializeObject<WedoctorApiResponseData>(result);
+                    if (respData.failed_count==0 && respData.success_count > 0)
+                    {
+                        this._orderRefuseApp.UpdateOrderRefuseReadStatus(listData);
+                    }
+                    else if(respData.failed_count > 0 && respData.success_count > 0)
+                    {
+                        List<OrderRefuse> updateList = new List<OrderRefuse>();
+                        foreach (var item in listData)
+                        {
+                            var data = respData.failed_reason_list.Where((w) => w.id == item.OrderId).ToList();
+                            if (data.Count==0)
+                            {
+                                updateList.Add(item);
+                            }
+                        }
+                        this._orderRefuseApp.UpdateOrderRefuseReadStatus(updateList);
+                        //未同步成功数据记录日志
+                        foreach (var item in respData.failed_reason_list)
+                        {
+                            LogUtil.WriteLog("异常订单同步",string.Format("异常订单同步失败:单号ID{0},错误消息:{1}", item.id, item.failed_msg));
+                        }
+                    }
+                    else if(respData.success_count==0)
+                    {
+                        //记录日志
+                        foreach (var item in respData.failed_reason_list)
+                        {
+                            LogUtil.WriteLog("异常订单同步", string.Format("异常订单同步失败:单号ID{0},错误消息:{1}", item.id, item.failed_msg));
+                        }
+                    }
                 }
             }
             catch (Exception e)
             {
+                LogUtil.WriteLog(string.Format("异常订单同步", "异常订单同步过程中发生系统异常,异常消息:{0}", e.Message));
                 throw e;
             }
-            return new JObject();
         }
 
 

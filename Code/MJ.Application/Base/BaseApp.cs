@@ -9,6 +9,7 @@ using System.Text;
 using System.Data;
 using System.Reflection;
 using MJ.Core.Utilities;
+using MJ.Application;
 
 namespace MJ.Application
 {
@@ -215,6 +216,19 @@ namespace MJ.Application
                 throw new Exception(ex.Message);
             }
             return iCount;
+        }
+
+        /// <summary>
+        /// 根据条件单个实体更新
+        /// <para>如：Update(entity,u =>u.id==1);</para>
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <param name="condition"></param>
+        /// <returns></returns>
+        public int Update(T entity, Expression<Func<T, bool>> condition)
+        {
+            return this.DbContext.Update(entity, condition);
+
         }
 
         /// <summary>
@@ -625,9 +639,9 @@ namespace MJ.Application
         /// </summary>
         /// <param name="where"></param>
         /// <returns></returns>
-        public T GetFirstEntity(Expression<Func<T, bool>> condition)
+        public T GetFirstEntity(Expression<Func<T, bool>> where)
         {
-            return this.DbContext.Query<T>().Where(condition).Where(t => !t.IsDelete).FirstOrDefault();
+            return this.DbContext.Query<T>(where).Where(t => !t.IsDelete).FirstOrDefault();
         }
 
         #endregion
@@ -658,12 +672,12 @@ namespace MJ.Application
         /// <param name="condition"></param>
         /// <param name="orderBy"></param>
         /// <returns></returns>
-        public IQuery<T> GetList(Expression<Func<T, bool>> condition, Expression<Func<T, string>> sort)
+        public IQuery<T> GetList(Expression<Func<T, bool>> condition)
         {
             var query = DbContext.Query<T>()
                     .Where(x => !x.IsDelete)   //排除已经逻辑删除的记录
                     .Where(condition)
-                    .OrderBy(sort);
+                    .OrderBy("CTime desc");
 
             return query;
         }
@@ -723,11 +737,11 @@ namespace MJ.Application
             {
                 page.Sort = page.Sort.Replace("ascending", "asc").Replace("descending", "desc");
             }
-            System.Linq.Expressions.Expression<Func<T, string>> sortCondition = (s) => (page.Sort);
+
             var query = DbContext.Query<T>(lockType)
                 .Where(x => !x.IsDelete)
                 .Where(condition)
-                .OrderBy(sortCondition);
+                .OrderBy(page.Sort);
 
             int total = query.Count();
             page.Total = total;
@@ -754,11 +768,11 @@ namespace MJ.Application
             {
                 page.Sort = page.Sort.Replace("ascending", "asc").Replace("descending", "desc");
             }
-            System.Linq.Expressions.Expression<Func<T, string>> sortCondition = (s) => page.Sort;
+
             var query = DbContext.Query<T>()
                 .Where(x => !x.IsDelete)
                 .Where(condition)
-                .OrderBy(sortCondition);
+                .OrderBy(page.Sort);
 
             int total = query.Count();
             page.Total = total;
@@ -784,10 +798,9 @@ namespace MJ.Application
             {
                 page.Sort = page.Sort.Replace("ascending", "asc").Replace("descending", "desc");
             }
-            System.Linq.Expressions.Expression<Func<T, string>> sortCondition = (s) => page.Sort;
             var query = DbContext.Query<T>()
                 .Where(x => !x.IsDelete)
-                .OrderBy(sortCondition);
+                .OrderBy(page.Sort);
 
             int total = query.Count();
             page.Total = total;
@@ -873,10 +886,9 @@ namespace MJ.Application
             {
                 page.Sort = page.Sort.Replace("ascending", "asc").Replace("descending", "desc");
             }
-            System.Linq.Expressions.Expression<Func<T, string>> sortCondition = (s) => page.Sort;
             var query = DbContext.Query<T>()
                 .Where(condition)
-                .OrderBy(sortCondition);
+                .OrderBy(page.Sort);
 
             int total = query.Count();
             page.Total = total;
@@ -902,9 +914,8 @@ namespace MJ.Application
             {
                 page.Sort = page.Sort.Replace("ascending", "asc").Replace("descending", "desc");
             }
-            System.Linq.Expressions.Expression<Func<T, string>> sortCondition = (s) => page.Sort;
             var query = DbContext.Query<T>()
-                .OrderBy(sortCondition);
+                .OrderBy(page.Sort);
 
             int total = query.Count();
             page.Total = total;

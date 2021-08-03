@@ -47,11 +47,21 @@
     <Compile Include="Base\BaseEntity.cs" />
     <Compile Include="Base\EntityComparer.cs" />
     <Compile Include="Base\UniqueCodeAttribute.cs" />
+    <Compile Include="Order\OrderDrugs.cs" />
+    <Compile Include="Order\Order_Data.cs" />
+    <Compile Include="Order\Order_Details.cs" />
+    <Compile Include="Order\Order_Ext_Info.cs" />
+    <Compile Include="Order\Order_Prescription_Show_Detail.cs" />
+    <Compile Include="Order\Order_Tcm_Drugs.cs" />
     <Compile Include="Order_Delivery\OrderDelivery.cs" />
     <Compile Include="Order_Delivery\OrderDeliveryDetails.cs" />
     <Compile Include="Order\OrderRefuse.cs" />
     <Compile Include="Order_Delivery\OrderDeliveryLogistics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Request\req_data.cs" />
+    <Compile Include="Request\ResponseData.cs" />
+    <Compile Include="Stock\Stock.cs" />
+    <Compile Include="Stock\StockDetail.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
