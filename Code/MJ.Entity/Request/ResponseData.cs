@@ -19,6 +19,17 @@ namespace MJ.Entity.Request
     public class WedoctorApiResponseDetailData
     {
         public string failed_msg { get; set; }
+
         public long id { get; set; }
+
+        /// <summary>
+        /// 失败原因-库存更新接口使用
+        /// </summary>
+        public string reason { get; set; }
+
+        /// <summary>
+        /// 供应商SKU编码-库存更新接口使用
+        /// </summary>
+        public string supplier_sku_no { get; set; }
     }
 }

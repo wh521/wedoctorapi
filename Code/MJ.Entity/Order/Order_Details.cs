@@ -15,6 +15,12 @@ namespace MJ.Entity.Order
     public class Order_Details:BaseEntity
     {
         /// <summary>
+        /// 数据记录ID
+        /// </summary>
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey = true)]
+        public string DataId { get; set; }
+        /// <summary>
         /// 批准文号
         /// </summary>
         [Description("批准文号")]
@@ -79,5 +85,15 @@ namespace MJ.Entity.Order
         /// </summary>
         [Description("发货单主单ID")]
         public long? send_order_id { get; set; }
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
     }
 }

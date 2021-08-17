@@ -38,8 +38,8 @@ namespace WeDectorApi
             this.btnUpdateStockStart = new System.Windows.Forms.Button();
             this.ddlUpdateStockTime = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnUpdateStockStop = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnOrderStop = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -122,15 +122,6 @@ namespace WeDectorApi
             this.panel1.Size = new System.Drawing.Size(847, 49);
             this.panel1.TabIndex = 5;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(202, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "微医云库存更新同步间隔分钟";
-            // 
             // btnUpdateStockStop
             // 
             this.btnUpdateStockStop.Location = new System.Drawing.Point(548, 15);
@@ -140,6 +131,15 @@ namespace WeDectorApi
             this.btnUpdateStockStop.Text = "库存更新同步停止";
             this.btnUpdateStockStop.UseVisualStyleBackColor = true;
             this.btnUpdateStockStop.Click += new System.EventHandler(this.btnUpdateStockStop_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(202, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "微医云库存更新同步间隔分钟";
             // 
             // panel2
             // 
@@ -298,7 +298,7 @@ namespace WeDectorApi
             this.MaximizeBox = false;
             this.Name = "FrmApi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "微医云-ERP-API";
+            this.Text = "微医云-ERP-API-P-1.0";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmApi_FormClosing);
             this.Load += new System.EventHandler(this.FrmApi_Load);
             this.SizeChanged += new System.EventHandler(this.FrmApi_SizeChanged);

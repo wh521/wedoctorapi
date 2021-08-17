@@ -11,13 +11,24 @@ namespace MJ.Entity.Order_Delivery
     /// <summary>
     /// 订单发货明细数据类
     /// </summary>
-    [Table("OrderDeliveryDetails")]
+    [Table("Order_Delivery_Detail")]
     public class OrderDeliveryDetail:BaseEntity
     {
         /// <summary>
-        /// 订单子单ID
+        /// 数据记录ID
         /// </summary>
-        [Description("订单子单ID")]
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey = true)]
+        public string DataId { get; set; }
+        /// <summary>
+        /// 发货主单ID，主外键关系
+        /// </summary>
+        [Description("发货主单ID，主外键关系")]
+        public long Id { get; set; }
+        /// <summary>
+        /// 订单子单ID-发货主单ID，主外键关系
+        /// </summary>
+        [Description("订单子单ID-发货主单ID，主外键关系")]
         public long Detail_Id { get; set; }
         /// <summary>
         /// 产品批号
@@ -44,5 +55,18 @@ namespace MJ.Entity.Order_Delivery
         /// </summary>
         [Description("有效期,格式：yyyyMMdd")]
         public string Expiration_Date { get; set; }
+
+
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
     }
 }

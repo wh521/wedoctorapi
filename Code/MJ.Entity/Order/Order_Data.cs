@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 namespace MJ.Entity.Order
 {
     /// <summary>
-    /// 发货单子单
+    /// 发货主单
     /// </summary>
     [Table("Order_Data")]
     public class Order_Data:BaseEntity
     {
+        /// <summary>
+        /// 数据记录ID
+        /// </summary>
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey = true)]
+        public string DataId { get; set; }
         /// <summary>
         /// 收货人所在市
         /// </summary>
@@ -146,6 +152,18 @@ namespace MJ.Entity.Order
         public string verification_code { get; set; }
 
         /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
+
+        /// <summary>
         /// 发货单子单
         /// </summary>
         public List<Order_Details> details { get; set; }
@@ -154,5 +172,10 @@ namespace MJ.Entity.Order
         /// 扩展信息
         /// </summary>
         public Order_Ext_Info ext_info { get; set; }
+
+        /// <summary>
+        /// 处方信息--指定门店透出
+        /// </summary>
+        public Order_Prescription_Show_Detail prescription_show_detail { get; set; }
     }
 }

@@ -1055,5 +1055,22 @@ namespace MJ.Application
             return ListStr;
         }
         #endregion
+
+        #region 获取服务器日期
+
+        public DateTime GetServerDateTime()
+        {
+            try
+            {
+                var currentDateTime = DbContext.SqlQuery<DateTime>("select getdate() as currentDate", null).FirstOrDefault() ;
+                return currentDateTime;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        #endregion
     }
 }

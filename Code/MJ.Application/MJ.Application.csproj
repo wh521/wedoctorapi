@@ -65,6 +65,16 @@
     <Compile Include="Base\PrintApp.cs" />
     <Compile Include="Base\RequestException.cs" />
     <Compile Include="Order\OrderRefuseApp.cs" />
+    <Compile Include="Order\Order_DataApp.cs" />
+    <Compile Include="Order\Order_DetailsApp.cs" />
+    <Compile Include="Order\Order_OffsetApp.cs" />
+    <Compile Include="Order\Order_Prescription_Show_DetailApp.cs" />
+    <Compile Include="Order\Order_DrugsApp.cs" />
+    <Compile Include="Order\Order_Tcm_DrugsApp.cs" />
+    <Compile Include="Order\Order_Ext_InfoApp.cs" />
+    <Compile Include="Order_Delivery\OrderDeliveryApp.cs" />
+    <Compile Include="Order_Delivery\OrderDeliveryDetailsApp.cs" />
+    <Compile Include="Order_Delivery\OrderDeliveryLogisticsApp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stock\StockDetailApp.cs" />
     <Compile Include="Stock\StockApp.cs" />

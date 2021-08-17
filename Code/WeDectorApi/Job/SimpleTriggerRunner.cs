@@ -20,23 +20,35 @@ namespace WeDectorApi.Job
             //创建调度工厂
             StdSchedulerFactory factory = new StdSchedulerFactory();
             var scheduler = await factory.GetScheduler();
-            await scheduler.Start();
+            //校验作业是否存在
+            if (!scheduler.CheckExists(new JobKey("SendOrderListJob", "SendOrderListGroup")).Result)
+            {
+                await scheduler.Start();
+                //定义作业并绑定作业业务类
+                IJobDetail job = JobBuilder.Create<SendOrderListJob>()
+                    .WithIdentity("SendOrderListJob", "SendOrderListGroup")
+                    .Build();
 
-            //定义作业并绑定作业业务类
-            IJobDetail job = JobBuilder.Create<SendOrderListJob>()
-                .WithIdentity("SendOrderListJob", "SendOrderListGroup")
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity("SendOrderListTrigger", "SendOrderListGroup")
+                    .StartNow()
+                    .WithSimpleSchedule((x) => x
+                        .WithIntervalInSeconds(withIntervalInSeconds)
+                        .RepeatForever()
+                    )
                 .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("SendOrderListTrigger", "SendOrderListGroup")
-                .StartNow()
-                .WithSimpleSchedule((x) => x
-                    .WithIntervalInSeconds(withIntervalInSeconds)
-                    .RepeatForever()
-                )
-            .Build();
+                await scheduler.ScheduleJob(job, trigger);
+            }
+        }
 
-            await scheduler.ScheduleJob(job, trigger);
+        /// <summary>
+        /// 移除查询订单作业
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task Delete_SendOrderList()
+        {
+            await DeleteJob("SendOrderListJob", "SendOrderListGroup");
         }
 
         /// <summary>
@@ -49,23 +61,36 @@ namespace WeDectorApi.Job
             //创建调度工厂
             StdSchedulerFactory factory = new StdSchedulerFactory();
             var scheduler = await factory.GetScheduler();
-            await scheduler.Start();
+            //校验作业是否存在
+            if (!scheduler.CheckExists(new JobKey("SendOrderRefuseJob", "SendOrderRefuseGroup")).Result)
+            {
+                await scheduler.Start();
 
-            //定义作业并绑定作业业务类
-            IJobDetail job = JobBuilder.Create<SendOrderRefuseJob>()
-                .WithIdentity("SendOrderRefuseJob", "SendOrderRefuseGroup")
+                //定义作业并绑定作业业务类
+                IJobDetail job = JobBuilder.Create<SendOrderRefuseJob>()
+                    .WithIdentity("SendOrderRefuseJob", "SendOrderRefuseGroup")
+                    .Build();
+
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity("SendOrderRefuseTrigger", "SendOrderRefuseGroup")
+                    .StartNow()
+                    .WithSimpleSchedule((x) => x
+                        .WithIntervalInSeconds(withIntervalInSeconds)
+                        .RepeatForever()
+                    )
                 .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("SendOrderRefuseTrigger", "SendOrderRefuseGroup")
-                .StartNow()
-                .WithSimpleSchedule((x) => x
-                    .WithIntervalInSeconds(withIntervalInSeconds)
-                    .RepeatForever()
-                )
-            .Build();
+                await scheduler.ScheduleJob(job, trigger);
+            }
+        }
 
-            await scheduler.ScheduleJob(job, trigger);
+        /// <summary>
+        /// 移除标识订单异常同步作业
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task Delete_SendOrderRefuse()
+        {
+            await DeleteJob("SendOrderRefuseJob", "SendOrderRefuseGroup");
         }
 
         /// <summary>
@@ -78,23 +103,36 @@ namespace WeDectorApi.Job
             //创建调度工厂
             StdSchedulerFactory factory = new StdSchedulerFactory();
             var scheduler = await factory.GetScheduler();
-            await scheduler.Start();
+            //校验作业是否存在
+            if (!scheduler.CheckExists(new JobKey("SendOrderDeliveryJob", "SendOrderDeliveryGroup")).Result)
+            {
+                await scheduler.Start();
 
-            //定义作业并绑定作业业务类
-            IJobDetail job = JobBuilder.Create<SendOrderDeliveryJob>()
-                .WithIdentity("SendOrderDeliveryJob", "SendOrderDeliveryGroup")
+                //定义作业并绑定作业业务类
+                IJobDetail job = JobBuilder.Create<SendOrderDeliveryJob>()
+                    .WithIdentity("SendOrderDeliveryJob", "SendOrderDeliveryGroup")
+                    .Build();
+
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity("SendOrderDeliveryTrigger", "SendOrderDeliveryGroup")
+                    .StartNow()
+                    .WithSimpleSchedule((x) => x
+                        .WithIntervalInSeconds(withIntervalInSeconds)
+                        .RepeatForever()
+                    )
                 .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("SendOrderDeliveryTrigger", "SendOrderDeliveryGroup")
-                .StartNow()
-                .WithSimpleSchedule((x) => x
-                    .WithIntervalInSeconds(withIntervalInSeconds)
-                    .RepeatForever()
-                )
-            .Build();
+                await scheduler.ScheduleJob(job, trigger);
+            }
+        }
 
-            await scheduler.ScheduleJob(job, trigger);
+        /// <summary>
+        /// 移除订单发货同步作业
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task Delete_SendOrderDelivery()
+        {
+            await DeleteJob("SendOrderDeliveryJob", "SendOrderDeliveryGroup");
         }
 
         /// <summary>
@@ -107,23 +145,52 @@ namespace WeDectorApi.Job
             //创建调度工厂
             StdSchedulerFactory factory = new StdSchedulerFactory();
             var scheduler = await factory.GetScheduler();
-            await scheduler.Start();
+            //校验作业是否存在
+            if (!scheduler.CheckExists(new JobKey("UpdateStockJob", "UpdateStockGroup")).Result)
+            {
+                await scheduler.Start();
 
-            //定义作业并绑定作业业务类
-            IJobDetail job = JobBuilder.Create<UpdateStockJob>()
-                .WithIdentity("UpdateStockJob", "UpdateStockGroup")
+                //定义作业并绑定作业业务类
+                IJobDetail job = JobBuilder.Create<UpdateStockJob>()
+                    .WithIdentity("UpdateStockJob", "UpdateStockGroup")
+                    .Build();
+
+                ITrigger trigger = TriggerBuilder.Create()
+                    .WithIdentity("UpdateStockTrigger", "UpdateStockGroup")
+                    .StartNow()
+                    .WithSimpleSchedule((x) => x
+                        .WithIntervalInSeconds(withIntervalInSeconds)
+                        .RepeatForever()
+                    )
                 .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                .WithIdentity("UpdateStockTrigger", "UpdateStockGroup")
-                .StartNow()
-                .WithSimpleSchedule((x) => x
-                    .WithIntervalInSeconds(withIntervalInSeconds)
-                    .RepeatForever()
-                )
-            .Build();
+                await scheduler.ScheduleJob(job, trigger);
+            }
+        }
 
-            await scheduler.ScheduleJob(job, trigger);
+        /// <summary>
+        /// 移除库存同步更新作业
+        /// </summary>
+        /// <returns></returns>
+        public virtual async Task Delete_UpdateStock()
+        {
+            await DeleteJob("UpdateStockJob", "UpdateStockGroup");
+        }
+
+        /// <summary>
+        /// 根据Job名称、组删除作业
+        /// </summary>
+        /// <param name="name">作业名称</param>
+        /// <param name="group">作业组</param>
+        async Task DeleteJob(string name,string group)
+        {
+            StdSchedulerFactory factory = new StdSchedulerFactory();
+            var scheduler = await factory.GetScheduler();
+
+            JobKey jobKey = new JobKey(name, group);
+            await scheduler.DeleteJob(jobKey);
+            //await Task.Delay(-1);
+            await scheduler.Shutdown();
         }
 
 

@@ -11,6 +11,7 @@ namespace WeDectorApi.Job
 {
     class SendOrderDeliveryJob : IJob
     {
+
         public async Task Execute(IJobExecutionContext context)
         {
             SendOrderDelivery();
@@ -18,8 +19,8 @@ namespace WeDectorApi.Job
 
         void SendOrderDelivery()
         {
-            List<OrderDelivery> orderDeliveryList = new List<OrderDelivery>();
-            WeDoctorRequestApp.Post_SendOrderDelivery(orderDeliveryList);
+            WeDoctorRequestApp _req = new WeDoctorRequestApp();
+            _req.Post_SendOrderDelivery();
         }
     }
 }

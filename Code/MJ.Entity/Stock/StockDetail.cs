@@ -18,7 +18,7 @@ namespace MJ.Entity.Stock
         /// 供应商SKU编码,供应商导入药品三方编码
         /// </summary>
         [Description("供应商SKU编码，供应商导入药品三方编码")]
-        public long Supplier_Sku_No { get; set; }
+        public string Supplier_Sku_No { get; set; }
         /// <summary>
         /// 可用库存数量
         /// </summary>

@@ -17,8 +17,9 @@ namespace WeDectorApi.Job
 
         public void Execute_SendOrderList()
         {
-            WeDoctorRequestApp.Post_SendOrderList();
-            WeDoctorRequestApp.Post_SendOrderDetail();
+            WeDoctorRequestApp _req = new WeDoctorRequestApp();
+            _req.Post_SendOrderList();
+            //_req.Post_SendOrderDetail();
         }
     }
 }

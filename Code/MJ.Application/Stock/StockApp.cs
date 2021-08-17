@@ -30,10 +30,7 @@ namespace MJ.Application
             {
                 //查询库存明细
                 var detailData = _stockDetailApp.GetStockDetails();
-                if (detailData.Count > 0)
-                {
-                    stock.StockList = detailData;
-                }
+                stock.StockList = detailData;
                 return stock;
             }
             catch (Exception ex)

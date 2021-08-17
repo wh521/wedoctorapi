@@ -11,19 +11,15 @@ namespace MJ.Entity.Order_Delivery
     /// <summary>
     /// 订单发货主表
     /// </summary>
-    [Table("OrderDelivery")]
+    [Table("Order_Delivery")]
     public class OrderDelivery:BaseEntity
     {
         /// <summary>
-        /// 供应商Id
+        /// 数据记录ID
         /// </summary>
-        [Description("供应商Id")]
-        public long Supplier_Id { get; set; }
-        /// <summary>
-        /// 供应商店铺Id
-        /// </summary>
-        [Description("供应商店铺Id")]
-        public long Supplier_Shop_Id { get; set; }
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey = true)]
+        public string DataId { get; set; }
         /// <summary>
         /// 发货单主单ID
         /// </summary>
@@ -34,6 +30,19 @@ namespace MJ.Entity.Order_Delivery
         /// </summary>
         [Description("核销码(自提必填)")]
         public string Verification_Code { get; set; }
+
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
+
         /// <summary>
         /// 物流信息
         /// </summary>

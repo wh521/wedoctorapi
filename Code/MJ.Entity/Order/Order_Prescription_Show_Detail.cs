@@ -11,9 +11,15 @@ namespace MJ.Entity.Order
     /// <summary>
     /// 处方信息-指定门店透出
     /// </summary>
-    [Table("处方信息-指定门店透出")]
+    [Table("Order_Prescription_Show_Detail")]
     public class Order_Prescription_Show_Detail:BaseEntity
     {
+        /// <summary>
+        /// 数据记录ID
+        /// </summary>
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey =true)]
+        public string DataId { get; set; }
         /// <summary>
         /// 处方笺抬头
         /// </summary>
@@ -149,6 +155,19 @@ namespace MJ.Entity.Order
         /// </summary>
         [Description("中药药剂容量包")]
         public double? package_num { get; set; }
+
+
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
 
         /// <summary>
         /// 西药处方单药品

@@ -27,6 +27,12 @@ namespace WeDectorApi
 
         private void button1_Click(object sender, EventArgs e)
         {
+            MessageBox.Show(Convert.ToDecimal(1045 / 100.00).ToString());
+            MessageBox.Show(Math.Ceiling(Convert.ToDecimal(1045.00 / 100.00)).ToString());
+            return;
+
+            WeDoctorRequestApp _wedoctorApp = new WeDoctorRequestApp();
+            _wedoctorApp.Post_UpdateStock();
             //ApiHeader header = WeDectorConfiger.ApiHeader;
 
             //List<Supplyer> listSupper = WeDectorConfiger.Supplyers;
@@ -185,7 +191,7 @@ namespace WeDectorApi
             orderDeliveryList.Add(delivery_2);
 
 
-            JObject joDevliyer = WeDoctorRequestApp.Post_SendOrderDelivery(orderDeliveryList);
+            //JObject joDevliyer = new WeDoctorRequestApp().Post_SendOrderDelivery(orderDeliveryList);
 
 
             return;

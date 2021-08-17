@@ -48,9 +48,13 @@
     <Compile Include="Base\EntityComparer.cs" />
     <Compile Include="Base\UniqueCodeAttribute.cs" />
     <Compile Include="Order\OrderDrugs.cs" />
+    <Compile Include="Order\OrderEntity.cs" />
+    <Compile Include="Order\OrderOffset.cs" />
     <Compile Include="Order\Order_Data.cs" />
+    <Compile Include="Order\Order_Detail_Details.cs" />
     <Compile Include="Order\Order_Details.cs" />
     <Compile Include="Order\Order_Ext_Info.cs" />
+    <Compile Include="Order\Order_Detail_Data.cs" />
     <Compile Include="Order\Order_Prescription_Show_Detail.cs" />
     <Compile Include="Order\Order_Tcm_Drugs.cs" />
     <Compile Include="Order_Delivery\OrderDelivery.cs" />

@@ -11,9 +11,20 @@ namespace MJ.Entity.Order_Delivery
     /// <summary>
     /// 订单发货明细数据类
     /// </summary>
-    [Table("OrderDeliveryLogistics")]
+    [Table("Order_Delivery_Logistics")]
     public class OrderDeliveryLogistics:BaseEntity
     {
+        /// <summary>
+        /// 数据记录ID
+        /// </summary>
+        [Description("数据记录ID")]
+        [Column(IsPrimaryKey = true)]
+        public string DataId { get; set; }
+        /// <summary>
+        /// 发货主单ID
+        /// </summary>
+        [Description("发货主单ID")]
+        public long Send_Id { get; set; }
         /// <summary>
         /// 物流单号，当物流类型：1-快递-必填，2-线下配送-非必填、4-自提物流-非必填
         /// </summary>
@@ -51,5 +62,17 @@ namespace MJ.Entity.Order_Delivery
         /// </summary>
         [Description("骑手电话")]
         public string Delivery_Phone { get; set; }
+
+        /// <summary>
+        /// 订单读取更新状态0:未读取 1:已更新
+        /// </summary>
+        [Description("订单读取更新状态0:未读取 1:已更新")]
+        public int ReadStatus { get; set; }
+
+        /// <summary>
+        /// 数据读取更新时间
+        /// </summary>
+        [Description("数据读取更新时间")]
+        public DateTime? ReadTime { get; set; }
     }
 }
